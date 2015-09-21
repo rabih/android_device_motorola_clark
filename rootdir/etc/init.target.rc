@@ -35,7 +35,7 @@ on early-init
 
 on fs
     mount_all fstab.qcom
-    swapon_all fstab.qcom
+    #swapon_all fstab.qcom
 
     wait /dev/block/bootdevice/by-name/cache
     mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
@@ -61,10 +61,8 @@ on post-fs-data
 on boot
     start rmt_storage
     start rfs_access
-#    write /sys/bus/i2c/devices/2-004a/update_fw 1
-#    write /sys/bus/i2c/devices/2-004a/update_cfg 1
-#    write /sys/bus/i2c/devices/2-0020/input/input0/update_fw 1
-# access permission for secure touch
+
+    # access permission for secure touch
     chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch_enable
     chmod 0440 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch
     chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch_enable
@@ -81,49 +79,16 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics
 
-## Allow usb charging to be disabled persistently
-#on property:persist.usb.chgdisabled=1
-#    write /sys/class/power_supply/battery/charging_enabled 0
-#
-#on property:persist.usb.chgdisabled=0
-#    write /sys/class/power_supply/battery/charging_enabled 1
-#
-#service qrngd /system/bin/qrngd -f
-#    class main
-#    user root
-#    group root
-#
-#service qrngp /system/bin/qrngp
-#    class main
-#    user root
-#    group root
-#    oneshot
-#    disabled
-#
-#on property:sys.boot_completed=1
-#    start qrngp
-#
-
 service qseecomd /system/bin/qseecomd
    class core
    user root
    group root
-
-#service seempd /system/bin/seempd
-#   class core
-#   user system
-#   group system
-#   socket seempdw dgram 0666 system system
 
 service perfd /system/bin/perfd
    class main
    user root
    disabled
 
-#service mpdecision /system/bin/mpdecision --avg_comp
-#   user root
-#   disabled
-#
 service per_mgr /system/bin/pm-service
     class core
     user system
@@ -141,11 +106,6 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-#service qosmgrd /system/bin/qosmgr /system/etc/qosmgr_rules.xml
-#   user system
-#   group system
-#   disabled
-#
 service thermal-engine /system/bin/thermal-engine
    class main
    user root
@@ -153,15 +113,6 @@ service thermal-engine /system/bin/thermal-engine
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
    group root
-
-#Not used by Mot
-#service security-check1 /sbin/security_boot_check system
-#    class core
-#    oneshot
-
-#service security-check2 /sbin/security_boot_check recovery
-#    class core
-#    oneshot
 
 service time_daemon /system/bin/time_daemon
    class late_start
@@ -173,43 +124,6 @@ service adsprpcd /system/bin/adsprpcd
    user media
    group media
 
-#service imsqmidaemon /system/bin/imsqmidaemon
-#    class main
-#    user system
-#    socket ims_qmid stream 0660 system radio
-#    group radio net_raw log qcom_diag
-
-#service imsdatadaemon /system/bin/imsdatadaemon
-#    class main
-#    user system
-#    socket ims_datad stream 0660 system radio
-#    group system wifi radio inet net_raw log qcom_diag net_admin
-#    disabled
-#
-#service wcnss-service /system/bin/wcnss_service
-#    class late_start
-#    user root
-#    group system wifi
-#    oneshot
-#
-#on property:sys.ims.QMI_DAEMON_STATUS=1
-#    start imsdatadaemon
-
-#service ims_rtp_daemon /system/bin/ims_rtp_daemon
-#   class main
-#   user system
-#   socket ims_rtpd stream 0660 system radio
-#   group radio net_raw diag qcom_diag log
-#   disabled
-
-#on property:sys.ims.DATA_DAEMON_STATUS=1
-#    start ims_rtp_daemon
-
-#service imscmservice /system/bin/imscmservice
-#   class main
-#   user system
-#   group radio net_raw diag qcom_diag log
-
 service ppd /system/bin/mm-pp-daemon
     class late_start
     user system
@@ -219,27 +133,8 @@ service ppd /system/bin/mm-pp-daemon
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
-#Not used by mot
-#service ml_daemon /system/bin/ml_daemon
-#    class core
-#    user root
-#    group root
-
-#Not used by mot
-#service seald /system/bin/seald
-#    class late_start
-#    user root
-#    group system
-
 service energy-awareness /system/bin/energy-awareness
     class main
     user root
     group system
     oneshot
-
-#Not used
-#service fidodaemon /system/vendor/bin/fidodaemon
-#    class late_start
-#    user system
-#    group system
-
