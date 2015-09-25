@@ -92,6 +92,15 @@ vendor/lib/soundfx/libqcreverb.so
 # Bluetooth
 bin/btnvtool
 bin/hci_qcomm_init
+bin/wcnss_filter
+etc/firmware/nvm_tlv.bin
+etc/firmware/nvm_tlv_1.3.bin
+etc/firmware/nvm_tlv_2.1.bin
+etc/firmware/nvm_tlv_3.0.bin
+etc/firmware/rampatch_tlv.img
+etc/firmware/rampatch_tlv_1.3.tlv
+etc/firmware/rampatch_tlv_2.1.tlv
+etc/firmware/rampatch_tlv_3.0.tlv
 vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
 
@@ -356,8 +365,6 @@ bin/pm-service
 bin/usb_uicc_client
 vendor/lib64/libconfigdb.so
 vendor/lib64/libdsi_netctrl.so
-vendor/lib64/libdsutils.so
-vendor/lib64/libqcci_legacy.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
 vendor/lib64/libqmi_cci.so
@@ -373,9 +380,7 @@ vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libvoice-svc.so
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
-vendor/lib/libdsutils.so
 vendor/lib/libidl.so
-vendor/lib/libqcci_legacy.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
 vendor/lib/libqmi_cci.so
@@ -524,25 +529,17 @@ lib64/librmnetctl.so
 vendor/lib/libdsutils.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libqcci_legacy.so
-vendor/lib/libqmi.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
 vendor/lib64/libdsutils.so
 vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libidl.so
 vendor/lib64/libqcci_legacy.so
-vendor/lib64/libqmi.so
 vendor/lib64/libdiag.so
 vendor/lib64/libqdi.so
 vendor/lib64/libqdp.so
-vendor/lib64/libqmi.so
-vendor/lib64/libqmi_cci.so
 vendor/lib64/libqmi_client_helper.so
-vendor/lib64/libqmi_client_qmux.so
-vendor/lib64/libqmi_common_so.so
 vendor/lib64/libqmi_csi.so
-vendor/lib64/libqmi_encdec.so
-vendor/lib64/libqmiservices.so
 
 # CNE / DPM
 lib64/libcnefeatureconfig.so
@@ -589,6 +586,7 @@ lib/libmotext_inf.so
 lib/libqmimotext.so
 lib/libril.so
 lib64/libadropbox.so
+lib64/libqmimotext.so
 vendor/lib/libconfigdb.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libmdmdetect.so
@@ -619,6 +617,10 @@ lib/hw/lights.msm8992.so
 
 # Time (Linked to radio)
 bin/time_daemon
+vendor/lib/libTimeService.so
+vendor/lib/libtime_genoff.so
+vendor/lib64/libTimeService.so
+vendor/lib64/libtime_genoff.so
 
 vendor/lib/hw/flp.default.so
 vendor/lib/hw/activity_recognition.msm8992.so
