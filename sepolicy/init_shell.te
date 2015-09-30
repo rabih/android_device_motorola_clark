@@ -1,1 +1,1 @@
-allow init_shell block_device:blk_file { getattr open read setattr };
+allow init_shell block_device:blk_file { getattr setattr };

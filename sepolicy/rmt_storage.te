@@ -1,1 +1,0 @@
-allow property_service rmt_storage:property_socket write;
