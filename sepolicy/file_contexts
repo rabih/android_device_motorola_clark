@@ -3,3 +3,9 @@
 
 /dev/block/mmcblk0p(.*)       u:object_r:mmc_block_device:s0
 /dev/block/mmcblk1p(.*)       u:object_r:mmc_block_device:s0
+
+/dev/bcm2079x-i2c             u:object_r:nfc_device:s0
+
+/dev/motosh                   u:object_r:sensors_device:s0
+/dev/motosh_as                u:object_r:sensors_device:s0
+/dev/motosh_ms                u:object_r:sensors_device:s0
