@@ -172,8 +172,11 @@ BOARD_SEPOLICY_UNION += \
     init.te \
     init_shell.te \
     mm-qcamerad.te \
-    system_server.te \
+    qmuxd.te \
+    rild.te \
+    rmt_storage.te \
     sysinit.te \
+    system_server.te \
     ueventd.te \
     vold.te
 
