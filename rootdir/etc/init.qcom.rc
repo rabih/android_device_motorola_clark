@@ -74,6 +74,9 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
+    start rmt_storage
+    start rfs_access
+
     chown system system /sys/class/backlight/lcd-backlight:0/brightness
     chown system system /sys/class/backlight/lcd-backlight:0/max_brightness
     chown system system /sys/class/leds/charging/brightness
@@ -108,9 +111,6 @@ on boot
 
     # set permission for Dynamic-CABC feature
     chown system system /sys/class/graphics/fb0/cabc_mode
-
-    start rmt_storage
-    start rfs_access
 
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state

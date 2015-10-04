@@ -1,9 +1,14 @@
-/fsg/(.*)                     u:object_r:firmware_file:s0
-/bt_firmware/(.*)             u:object_r:firmware_file:s0
+#/persist/properties           u:object_r:persist_property_file:s0
+/modem/(.*)                   u:object_r:firmware_file:s0
+#/bt_firmware/(.*)             u:object_r:bt_firmware_file:s0
+
 
 /dev/block/mmcblk0p(.*)       u:object_r:mmc_block_device:s0
 /dev/block/mmcblk1p(.*)       u:object_r:mmc_block_device:s0
 
+# Sensors
+#/dev/akm8973.*                u:object_r:sensors_device:s0
+#/dev/accelerometer            u:object_r:sensors_device:s0
 /dev/bcm2079x-i2c             u:object_r:nfc_device:s0
 
 /dev/motosh                   u:object_r:sensors_device:s0
